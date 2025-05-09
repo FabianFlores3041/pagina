@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %} Recargas {% endblock %}
+
+{% block body %}
+<div class="alert alert-success" role="alert">
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success" role="alert">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+</div>
+
+<h2 class="text-center mb-4">Recargas telefonicas</h2>
+<div class="d-flex justify-content-center align-items-center vh-10">
+    <form action="{{ url_for('agregar_Recarga') }}" method="POST">
+        <div class="mb-3">
+            <label for="Para" class="form-label">Para</label>
+            <input type="text" class="form-control" id="Para" name="Para" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Compañía</label>
+            <!-- hidden input para enviar al servidor -->
+            <input type="hidden" name="compania" id="companiaInput">
+        
+            <!-- botón dropdown -->
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" 
+                      type="button" 
+                      id="companiaBtn" 
+                      data-bs-toggle="dropdown" 
+                      aria-expanded="false">
+                Selecciona Compañía
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="companiaBtn">
+                <li><a class="dropdown-item" href="#" data-value="Telcel">Telcel</a></li>
+                <li><a class="dropdown-item" href="#" data-value="Movistar">Movistar</a></li>
+                <li><a class="dropdown-item" href="#" data-value="AT&T">AT&amp;T</a></li>
+                <li><a class="dropdown-item" href="#" data-value="PilloFon">PilloFon</a></li>
+              </ul>
+            </div>
+          </div>
+       
+          <br></br>
+            <div class="mb-3">
+                <label class="form-label">Importe</label>
+                <div class="btn-group" role="group" aria-label="Importes">
+                  <input type="radio" class="btn-check" name="importeRe" id="imp50" autocomplete="off" value="50">
+                  <label class="btn btn-outline-primary" for="imp50">50 $</label>
+              
+                  <input type="radio" class="btn-check" name="importeRe" id="imp100" autocomplete="off" value="100">
+                  <label class="btn btn-outline-primary" for="imp100">100 $</label>
+              
+                  <input type="radio" class="btn-check" name="importeRe" id="imp150" autocomplete="off" value="150">
+                  <label class="btn btn-outline-primary" for="imp150">150 $</label>
+                </div>
+              
+                <div class="btn-group mt-2" role="group" aria-label="Importes">
+                  <input type="radio" class="btn-check" name="importeRe" id="imp200" autocomplete="off" value="200">
+                  <label class="btn btn-outline-primary" for="imp200">200 $</label>
+              
+                  <input type="radio" class="btn-check" name="importeRe" id="imp250" autocomplete="off" value="250">
+                  <label class="btn btn-outline-primary" for="imp250">250 $</label>
+              
+                  <input type="radio" class="btn-check" name="importeRe" id="imp300" autocomplete="off" value="300">
+                  <label class="btn btn-outline-primary" for="imp300">300 $</label>
+                </div>
+              
+                <div class="btn-group mt-2" role="group" aria-label="Importes">
+                  <input type="radio" class="btn-check" name="importeRe" id="imp500" autocomplete="off" value="500">
+                  <label class="btn btn-outline-primary" for="imp500">500 $</label>
+              
+                  <input type="radio" class="btn-check" name="importeRe" id="imp1000" autocomplete="off" value="1000">
+                  <label class="btn btn-outline-primary" for="imp1000">1000 $</label>
+              
+                  <input type="radio" class="btn-check" name="importeRe" id="imp1500" autocomplete="off" value="1500">
+                  <label class="btn btn-outline-primary" for="imp1500">1500 $</label>
+                </div>
+            </div>
+          <br></br>
+          
+          
+        <button type="submit" class="btn btn-primary">Recargar</button>
+    </form>
+    
+</div>
+
+
+<script>
+    setTimeout(function() {
+        const alert = document.querySelector('.alert');
+        if (alert) {
+            alert.style.display = 'none';
+        }
+    }, 2000); // 2 segundos
+</script>
+<script>
+    document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const val = this.getAttribute('data-value');
+        // 1) actualizar texto del botón
+        document.getElementById('companiaBtn').innerText = this.innerText;
+        // 2) actualizar input oculto para enviar el formulario
+        document.getElementById('companiaInput').value = val;
+      });
+    });
+  </script>
+  
+{% endblock %}

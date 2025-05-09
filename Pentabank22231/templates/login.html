@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lab(0% 0 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: rgb(255, 255, 255);
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 242, 242, 0.1);
+      width: 300px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 100%;
+      padding: 0.7em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-container input[type="submit"] {
+      width: 100%;
+      padding: 0.7em;
+      margin-top: 0.5em;
+      background-color: #f50404;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .login-container input[type="submit"]:hover {
+      background-color: #f80000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form action="/procesar-login" method="POST">
+      <input type="text" name="usuario" placeholder="Usuario" required>
+      <input type="password" name="contrasena" placeholder="Contraseña" required>
+      <input type="submit" value="Entrar">
+    </form>
+  </div>
+
+</body>
+</html>

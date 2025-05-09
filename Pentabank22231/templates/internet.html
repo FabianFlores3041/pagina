@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %} Pentabank {% endblock %}
+
+{% block body %}
+<style>
+  body {
+    color: white;
+    background-color: #000000;
+  }
+
+  .form-label {
+    color: #ffffff;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .form-select, .form-control {
+    max-width: 400px;
+  }
+</style>
+
+<!-- Formulario de pago de servicios de Internet -->
+<div class="container mt-5">
+  <h3 class="mb-4">Pago de servicio de Internet</h3>
+  <form id="formPago" onsubmit="return realizarPago()">
+    
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Número de teléfono:</label>
+      <input type="tel" class="form-control" id="telefono" placeholder="Ej. 5512345678" pattern="[0-9]{10}" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="servicioSelect" class="form-label">Elige tu servicio:</label>
+      <select class="form-select" id="servicioSelect" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="Infinitum">Infinitum</option>
+        <option value="TotalPlay">TotalPlay</option>
+        <option value="Izzi">Izzi</option>
+        <option value="Megacable">Megacable</option>
+        <option value="Sky">Sky</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="montoPago" class="form-label">Monto a pagar:</label>
+      <input type="number" class="form-control" id="montoPago" min="1" placeholder="Ingresa el monto" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Pagar</button>
+  </form>
+</div>
+
+<script>
+  function realizarPago() {
+    const telefono = document.getElementById("telefono").value.trim();
+    const servicio = document.getElementById("servicioSelect").value;
+    const monto = document.getElementById("montoPago").value;
+
+    if (!telefono.match(/^\d{10}$/)) {
+      alert("Ingresa un número de teléfono válido de 10 dígitos.");
+      return false;
+    }
+
+    if (!servicio || !monto || monto <= 0) {
+      alert("Por favor, completa todos los campos correctamente.");
+      return false;
+    }
+
+    // Aquí puedes hacer una petición real al servidor si deseas
+    alert(`Pago de $${monto} a ${servicio} con el número ${telefono} realizado con éxito.`);
+    return false; // Previene recarga
+  }
+</script>
+{% endblock %}

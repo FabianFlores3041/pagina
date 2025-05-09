@@ -1,0 +1,189 @@
+
+body {
+    background-color: #2c2c2c; /*COLOR FONDO*/
+    margin: 0;
+    padding: 0;
+    
+}
+
+h2{
+    color:#f0f4f8
+}
+
+p{
+    color:#f0f4f8
+}
+
+div{
+  color:#f0f4f8
+}
+
+main {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  .activity-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .activity-card {
+    background-color: #f0f4f8;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .activity-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .activity-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 40px;
+     background: url('https://th.bing.com/th/id/OIP.Ai_w4RYz0C9pVylkCmqD7wHaD8?cb=iwc1&rs=1&pid=ImgDetMain')
+              center/cover no-repeat;
+    color: var(--white);
+    position: relative;
+    isolation: isolate;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+
+  .hero-text {
+    max-width: 800px;
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  .hero-text h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .hero-text p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: var(--white);
+  }
+
+  .hero-buttons button {
+    padding: 12px 24px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: var(--accent-blue);
+    color: var(--white);
+  }
+
+  .hero-buttons button:hover {
+    transform: scale(1.05);
+  }
+
+  .services {
+    padding: 100px 40px;
+    background-color: #2c2c2c;
+    text-align: center;
+  }
+
+  .services h2 {
+    font-size: 2.4em;
+    margin-bottom: 60px;
+  }
+
+  .service-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 50px;
+  }
+
+  .service {
+    background-color: #ff5757;
+    border-radius: 12px;
+    padding: 40px;
+    flex: 1 1 280px;
+    max-width: 320px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .service:hover {
+    transform: translateY(-5px);
+  }
+
+  .service h3 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+  }
+
+  .service p {
+    font-size: 1.05em;
+    color: #333;
+  }
+
+  footer {
+    background-color: var(--main-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+/* Sólo background-color: nada más */
+.service-luz {
+  background-color: #fdd835; /* amarillo */
+}
+
+/* elimina padding aquí */
+.service-agua {
+  background-color: #29b6f6; /* azul */
+}
+
+/* elimina padding aquí */
+.service-internet {
+  background-color: #66bb6a; /* verde */
+}
+
+/* Quita la línea azul de enfoque en tus enlaces de servicio */
+.service-link,
+.service-link:focus,
+.service-link:active {
+  outline: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+
+  
+  

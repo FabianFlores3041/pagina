@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi Cuenta - Pentabank{% endblock %}
+
+{% block body %}
+<style>
+  body {
+    background-color: #000000;
+    color: white;
+  }
+
+  .card {
+    background-color: #1a1a1a;
+    border: 2px solid #f96a6a;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+  }
+
+  .card h4 {
+    color: #f96a6a;
+    margin-bottom: 20px;
+  }
+
+  .info-row {
+    margin-bottom: 10px;
+  }
+
+  .label {
+    font-weight: bold;
+    color: #f96a6a;
+  }
+
+  .value {
+    color: #ffffff;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .statement {
+    margin-top: 30px;
+  }
+
+  .statement table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+
+  .statement th, .statement td {
+    border: 1px solid #f96a6a;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .statement th {
+    background-color: #2a2a2a;
+    color: #f96a6a;
+  }
+
+  .statement td {
+    background-color: #121212;
+  }
+</style>
+
+<div class="card">
+  <h4>Cuenta Bancaria </h4>
+
+  <div class="info-row">
+    <span class="label">Nombre del Titular:</span>
+    <span class="value">Juan Pérez Ramírez</span>
+  </div>
+
+  <div class="info-row">
+    <span class="label">Número de Tarjeta:</span>
+    <span class="value">4532 7890 1234 5678</span>
+  </div>
+
+  <div class="info-row">
+    <span class="label">Fecha de Vencimiento:</span>
+    <span class="value">08/28</span>
+  </div>
+
+  <div class="info-row">
+    <span class="label">CVV:</span>
+    <span class="value">732</span>
+  </div>
+
+  <div class="info-row">
+    <span class="label">Saldo Disponible:</span>
+    <span class="value">$25,480.75 MXN</span>
+  </div>
+
+  <div class="statement">
+    <h5 style="color: #f96a6a;">Estado de Cuenta - Últimos Movimientos</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Descripción</th>
+          <th>Monto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>06/05/2025</td>
+          <td>Pago Izzi</td>
+          <td>-$560.00</td>
+        </tr>
+        <tr>
+          <td>05/05/2025</td>
+          <td>Depósito</td>
+          <td>+$5,000.00</td>
+        </tr>
+        <tr>
+          <td>02/05/2025</td>
+          <td>Pago Agua CESPM</td>
+          <td>-$310.50</td>
+        </tr>
+        <tr>
+          <td>30/04/2025</td>
+          <td>Transferencia Entrante</td>
+          <td>+$1,500.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

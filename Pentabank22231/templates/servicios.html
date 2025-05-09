@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Servicios | Pentabank{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block body %}
+<section class="services services-basicos">
+  <h2>Servicios Básicos de Pentabank</h2>
+  <div class="service-boxes">
+    <a href="{{ url_for('luz') }}" class="service-link">
+      <div class="service service-luz">
+        <h3>Pago de Luz</h3>
+        <p>Paga tu recibo de luz aquí.</p>
+      </div>
+    </a>
+    <a href="{{ url_for('agua') }}" class="service-link">
+      <div class="service service-agua">
+        <h3>Pago del Agua</h3>
+        <p>Paga tu recibo de agua aquí.</p>
+      </div>
+    </a>
+    <a href="{{ url_for('internet') }}" class="service-link">
+      <div class="service service-internet">
+        <h3>Pago de Internet</h3>
+        <p>Paga tu recibo de internet aquí.</p>
+      </div>
+    </a>
+  </div>
+</section>
+{% endblock %}

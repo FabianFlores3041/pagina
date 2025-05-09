@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi Cuenta - Pentabank{% endblock %}
+
+{% block body %}
+<style>
+  body {
+    background-color: #000;
+    color: white;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+  }
+
+  .opciones-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .opcion-seguro {
+    border: 2px solid #f96a6a;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 250px;
+    text-align: center;
+    background-color: #111;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .opcion-seguro:hover {
+    background-color: #222;
+  }
+
+  .opcion-seguro.selected {
+    border-color: #00ffcc;
+    background-color: #1a1a1a;
+  }
+
+  .opcion-seguro input {
+    display: none;
+  }
+
+  #precioCobertura {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #00ffcc;
+  }
+
+  #resumen {
+    background-color: #111;
+    border: 1px solid #00ffcc;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+
+<h2>Contratar un Seguro</h2>
+
+<form id="formularioSeguro" onsubmit="mostrarResumen(); return false;">
+  <div class="mb-3">
+    <label for="tipoSeguro" class="form-label">Elige tu seguro:</label>
+    <select class="form-select w-50" id="tipoSeguro" onchange="mostrarOpciones()" required>
+      <option value="" selected disabled>Selecciona una opción</option>
+      <option value="medico">Gastos Médicos</option>
+      <option value="auto">Seguro de Auto</option>
+      <option value="vida">Seguro de Vida</option>
+    </select>
+  </div>
+
+  <div id="opciones" class="opciones-container"></div>
+
+  <p id="precioCobertura"></p>
+
+  <hr>
+
+  <!-- Información del usuario -->
+  <div class="mb-3 w-50">
+    <label for="nombreUsuario" class="form-label">Nombre:</label>
+    <input type="text" class="form-control" id="nombreUsuario" required>
+  </div>
+
+  <div class="mb-3 w-50">
+    <label for="correoUsuario" class="form-label">Correo electrónico:</label>
+    <input type="email" class="form-control" id="correoUsuario" required>
+  </div>
+
+  <button class="btn btn-primary mt-3" type="submit">Contratar</button>
+</form>
+
+<!-- Resultado final -->
+<div id="resumen" style="display:none;"></div>
+
+<script>
+  const precios = {
+    medico: {
+      mayores: { nombre: "Gastos Médicos Mayores", precio: 3500 },
+      basicos: { nombre: "Gastos Médicos Básicos", precio: 1200 }
+    },
+    auto: {
+      completo: { nombre: "Auto Completo", precio: 4200 },
+      basico: { nombre: "Auto Básico", precio: 1800 }
+    },
+    vida: {
+      integral: { nombre: "Vida Integral", precio: 5000 },
+      vida_basico: { nombre: "Vida Básico", precio: 2000 }
+    }
+  };
+
+  let coberturaSeleccionada = null;
+  let tipoSeleccionado = null;
+
+  function mostrarOpciones() {
+    const tipo = document.getElementById("tipoSeguro").value;
+    const contenedor = document.getElementById("opciones");
+    contenedor.innerHTML = '';
+    document.getElementById("precioCobertura").innerText = "";
+    coberturaSeleccionada = null;
+    tipoSeleccionado = tipo;
+
+    if (precios[tipo]) {
+      for (const clave in precios[tipo]) {
+        const opcion = precios[tipo][clave];
+        const card = document.createElement('label');
+        card.className = 'opcion-seguro';
+        card.innerHTML = `
+          <input type="radio" name="cobertura" value="${clave}" onchange="seleccionarCobertura(this)">
+          <div>${opcion.nombre}<br><small>$${opcion.precio} MXN</small></div>
+        `;
+        contenedor.appendChild(card);
+      }
+    }
+  }
+
+  function seleccionarCobertura(input) {
+    document.querySelectorAll('.opcion-seguro').forEach(card => card.classList.remove('selected'));
+    input.closest('.opcion-seguro').classList.add('selected');
+    coberturaSeleccionada = input.value;
+    const precio = precios[tipoSeleccionado][coberturaSeleccionada].precio;
+    document.getElementById("precioCobertura").innerText = `Costo total: $${precio} MXN`;
+  }
+
+  function mostrarResumen() {
+    const nombre = document.getElementById("nombreUsuario").value.trim();
+    const correo = document.getElementById("correoUsuario").value.trim();
+
+    if (!tipoSeleccionado || !coberturaSeleccionada || !nombre || !correo) {
+      alert("Por favor, completa todos los campos y selecciona una cobertura.");
+      return;
+    }
+
+    const cobertura = precios[tipoSeleccionado][coberturaSeleccionada];
+
+    const resumen = `
+      <h4>Resumen de tu Contratación</h4>
+      <p><strong>Nombre:</strong> ${nombre}</p>
+      <p><strong>Correo:</strong> ${correo}</p>
+      <p><strong>Tipo de Seguro:</strong> ${document.getElementById("tipoSeguro").selectedOptions[0].text}</p>
+      <p><strong>Cobertura Elegida:</strong> ${cobertura.nombre}</p>
+      <p><strong>Precio:</strong> $${cobertura.precio} MXN</p>
+    `;
+
+    const resumenDiv = document.getElementById("resumen");
+    resumenDiv.innerHTML = resumen;
+    resumenDiv.style.display = "block";
+  }
+</script>
+
+{% endblock %}

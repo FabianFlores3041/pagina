@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Mercado {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block body %}
+<section class="services">
+    <h2>Servicios de Pentabank</h2>
+    <div class="service-boxes">
+      <a href="{{ url_for('mercado') }}" style="text-decoration: none; color: inherit;">
+        <div class="service">
+          <h3>Cripto monedas</h3>
+          <p>Aquí podrás revisar el estado de las monedas en tiempo real. Consulta los precios actualizados, las variaciones del mercado y las últimas tendencias de criptomonedas como Bitcoin, Ethereum, Tether y más.</p>
+          <p></p>
+          <p>.</p>
+          <p></p>
+          <P>.</P>
+          <p>.</p>
+        </div>
+      </a>
+    
+     <div class="service">
+        <a href="{{ url_for('materiaprima') }}" style="text-decoration: none; color: inherit;">
+            <h3>Materia Prima</h3>
+            <p>Monitorea en tiempo real los precios de materias primas como el oro, la plata, el petróleo y más. Mantente informado sobre las fluctuaciones del mercado y toma decisiones estratégicas para tus inversiones.
+
+</p>
+        </a>
+      </div>
+    
+       <div class="service">
+        <a href="{{ url_for('acciones') }}" style="text-decoration: none; color: inherit;">
+            <h3>Acciones</h3>
+            <p>Consulta el comportamiento de las acciones en tiempo real. Accede a datos clave del mercado bursátil para tomar decisiones informadas y seguir el rendimiento de tus inversiones.
+
+</p>
+          </a>
+          </div>
+    
+      
+    
+  </section>
+{% endblock %}

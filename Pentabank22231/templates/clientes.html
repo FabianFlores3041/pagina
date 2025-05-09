@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{%block title%} Pentabank {%endblock%}
+
+{%block head%}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {%endblock%}
+
+{% block body %}
+<section class="services">
+    <h2>Servicios de Pentabank</h2>
+    <div class="service-boxes">
+      <a href="{{ url_for('transacciones_Cli') }}" style="text-decoration: none; color: inherit;">
+        <div class="service">
+          <h3>Transacciones</h3>
+          <p>Haz transacciones facilmente desde nuestra pagina web.</p>
+          <p></p>
+          <p>.</p>
+          <p></p>
+          <P>.</P>
+          <p>.</p>
+        </div>
+      </a>
+      <div class="service">
+        <a href="{{ url_for('Recargas_cli') }}" style="text-decoration: none; color: inherit;">
+            <h3>Recargas telefonicas</h3>
+            <p>Recarga desde nuestra pagina web en varias compañias telefonicas.</p>
+        </a>
+      </div>
+      <div class="service">
+        <a href="{{ url_for('servicios') }}" style="text-decoration: none; color: inherit;">
+            <h3>Servicios</h3>
+            <p>Paga servicios publicos como la luz, internet y agua.</p>
+        </a>
+      </div>
+    
+       <div class="service">
+        <a href="{{ url_for('cuenta') }}" style="text-decoration: none; color: inherit;">
+            <h3>Servicios</h3>
+            <p>Paga servicios publicos como la luz, internet y agua.</p>
+        </a>
+      </div>
+    
+  </section>
+{%endblock%}

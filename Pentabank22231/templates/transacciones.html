@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Transacciones {% endblock %}
+
+{% block body %}
+<div class="alert alert-success" role="alert">
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success" role="alert">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+</div>
+
+<h2 class="text-center mb-4">Formulario de Transacción</h2>
+<div class="d-flex justify-content-center align-items-center vh-10">
+    <form action="{{ url_for('agregar_transaccion') }}" method="POST">
+        <div class="mb-3">
+            <label for="Destinatario" class="form-label">Destinatario</label>
+            <input type="text" class="form-control" id="Destinatario" name="Destinatario" required>
+        </div>
+        <div class="mb-3">
+            <label for="importe" class="form-label">Importe</label>
+            <input type="number" class="form-control" id="importe" name="importe" required>
+        </div>
+        <div class="mb-3">
+            <label for="concepto" class="form-label">Concepto</label>
+            <input type="text" class="form-control" id="concepto" name="concepto" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Transferir</button>
+    </form>
+    
+</div>
+
+
+<script>
+    setTimeout(function() {
+        const alert = document.querySelector('.alert');
+        if (alert) {
+            alert.style.display = 'none';
+        }
+    }, 3000); // 3 segundos
+</script>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{%block title%} Pentabank {%endblock%}
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="alert alert-success" role="alert">
+        {{ messages[0] }}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+<h2 class="text-center mb-4">Pago Luz</h2>
+<div class="d-flex justify-content-center align-items-center vh-10">
+    <form action="{{ url_for('luz') }}" method="POST">
+        <div class="mb-3">
+            <label for="Num_Ref" class="form-label">Numero de Referencias</label>
+            <input type="number" class="form-control" id="Num_Ref" name="Num_Ref" required>
+        </div>
+        <div class="mb-3">
+            <label for="MontoLuz" class="form-label">Importe</label>
+            <input type="number" class="form-control" id="MontoLuz" name="MontoLuz" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Pagar</button>
+    </form>
+    
+</div>
+
+
+<script>
+    setTimeout(function() {
+        const alert = document.querySelector('.alert');
+        if (alert) {
+            alert.style.display = 'none';
+        }
+    }, 3000); // 3 segundos
+</script>
+{%endblock%}
